@@ -44,9 +44,16 @@
 
         const key = e.key.toLowerCase();
 
-        // 【wキー】検索（元のeから変更）
+        // 【wキー】検索
         if (key === 'w') {
-            const word = selectWord(mouseX, mouseY);
+            // 1. まず、現在すでに選択されているテキストがあるか確認
+            let word = window.getSelection().toString().trim();
+
+            // 2. 選択範囲がない（空）の場合だけ、マウス位置の単語を取得する
+            if (!word) {
+                word = selectWord(mouseX, mouseY);
+            }
+
             if (word && word.length > 0) {
                 const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(word)}`;
                 window.open(searchUrl, '_blank');

@@ -86,7 +86,7 @@
         }
 
         // 【rキー】Geminiでさらに検索
-        if (key === 'r') {
+        if (key === 'e') {
             const word = getTargetWord();
             if (word) {
                 const prompt = `${word} とは？`;
